@@ -17,6 +17,4 @@ jobs:
                 host: ${{ secrets.VM_IP }}
                 username: ${{ secrets.VM_USERNAME }}
                 key: ${{ secrets.VM_SSH_KEY }}
-                script: |
-                  git clone https://github.com/SandSide/myflix-videos.git 
-
+                script: src/script.sh
