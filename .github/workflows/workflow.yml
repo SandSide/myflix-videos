@@ -18,8 +18,7 @@ jobs:
                 username: ${{ secrets.VM_USERNAME }}
                 key: ${{ secrets.VM_SSH_KEY }}
                 script: |
-                  ls
-                  pwd
-                  chmod +x ./src/script.sh
-                  ./src/script.sh
+                  wget https://raw.githubusercontent.com/SandSide/myflix-videos/cloud-deploy/src/script.sh
+                  chmod +x script.sh
+                  ./script.sh
 
