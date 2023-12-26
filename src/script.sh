@@ -6,7 +6,7 @@ if [ -d "./myflix-videos/.git" ]; then
     cd myflix-videos && git pull
 else
     # Clone repo
-    git clone https://github.com/SandSide/myflix-videos.git
+    git clone --branch cloud-deploy https://github.com/SandSide/myflix-videos.git
 fi
 
 # Go to source files
