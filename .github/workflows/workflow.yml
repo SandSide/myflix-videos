@@ -17,8 +17,9 @@ jobs:
                 host: ${{ secrets.VM_IP }}
                 username: ${{ secrets.VM_USERNAME }}
                 key: ${{ secrets.VM_SSH_KEY }}
+                source: "./myflix-videos/src/script.sh"
+                target: "/home/${{ secrets.VM_USERNAME }}/script.sh"
                 script: |
                   rm script.sh
-                  wget https://raw.githubusercontent.com/SandSide/myflix-videos/cloud-deploy/src/script.sh
                   bash script.sh
 
