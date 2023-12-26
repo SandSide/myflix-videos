@@ -17,4 +17,4 @@ jobs:
                 host: ${{ secrets.VM_IP }}
                 username: ${{ secrets.VM_USERNAME }}
                 key: ${{ secrets.VM_SSH_KEY }}
-                script: script.sh
+                script: ./../../src/script.sh
