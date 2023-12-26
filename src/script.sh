@@ -7,6 +7,7 @@ if [ -d "./myflix-videos/.git" ]; then
     echo 'Pulling github repo'
     # If cloned, pull latest changes
     cd myflix-videos && git pull
+    cd ..
 else
     # Clone repo
     echo 'Cloning github repo'
