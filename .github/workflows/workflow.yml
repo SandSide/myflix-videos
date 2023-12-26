@@ -11,7 +11,7 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
-            - name: Clone repository to VM
+            - name: Execute commands in VM via SSH
               uses: appleboy/ssh-action@master
               with:
                 host: ${{ secrets.VM_IP }}
