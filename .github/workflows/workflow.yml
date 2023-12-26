@@ -3,12 +3,14 @@ on:
     push:
         branches:
             - main
+            - cloud-deploy
 jobs:
     clone:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
+
             - name: Clone repository to VM
               uses: appleboy/ssh-action@master
               with:
