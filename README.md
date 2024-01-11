@@ -11,7 +11,7 @@ A microservice apart of `Myflix` project created using Nginx sever to server sta
 ## Usage
 
 1. Place static videos inside `/videos` folder.
-2. Build docker image.
+2. Build and run docker image.
 3. Access videos using `ip:port/vidoes/{filename}`.
 
 ## Deployment
