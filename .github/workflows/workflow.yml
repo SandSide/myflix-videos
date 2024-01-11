@@ -2,19 +2,41 @@ name: Deploy to Google Cloud VM
 on:
     push:
         branches:
-            - main
+            # - main
+            - feature/devops
+            - cloud-deploy
+        paths:
+          - '!**/README.md'
+
 jobs:
-    clone:
+    build:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
-            - name: Clone repository to VM
+              uses: actions/checkout@v4  
+              
+            - name: Login to docker hub
+              uses: docker/login-action@v3
+              with:
+                username: ${{ secrets.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Build and push docker image
+              uses: docker/build-push-action@v5
+              with:
+                context: ./src
+                push: true
+                tags: sandside/myflix:videos
+
+            - name: Pull and run image in VM
               uses: appleboy/ssh-action@master
               with:
                 host: ${{ secrets.VM_IP }}
                 username: ${{ secrets.VM_USERNAME }}
                 key: ${{ secrets.VM_SSH_KEY }}
                 script: |
-                  git clone https://github.com/SandSide/myflix-videos.git 
-
+                  docker stop myflix-videos
+                  docker rm myflix-videos
+                  docker pull sandside/myflix:videos
+                  docker run -d -p 80:80 --restart=always --name myflix-videos sandside/myflix:videos
