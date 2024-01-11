@@ -2,9 +2,12 @@ name: Deploy to Google Cloud VM
 on:
     push:
         branches:
-            - main
+            # - main
             - feature/devops
             - cloud-deploy
+        paths:
+          - '!**/README.md'
+
 jobs:
     build:
         runs-on: ubuntu-latest
